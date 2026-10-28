@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Rewrite this ad copy, it sounds like ChatGPT wrote it",
+    "should_trigger": true
+  },
+  {
+    "query": "make a 15 second promo reel for my product, I don't want it to look like a template",
+    "should_trigger": true
+  },
+  {
+    "query": "review this storyboard for my product launch video and tell me what feels generic",
+    "should_trigger": true
+  },
+  {
+    "query": "is meri Hinglish caption bahut translated lag rahi hai, fix kar do",
+    "should_trigger": true
+  },
+  {
+    "query": "my landing page looks like every other AI-generated site, how do I make it distinct",
+    "should_trigger": true
+  },
+  {
+    "query": "write a voiceover script and direct the delivery for a 30 second ad",
+    "should_trigger": true
+  },
+  {
+    "query": "QA this finished mp4: pacing, loudness, anything that looks like AI slop",
+    "should_trigger": true
+  },
+  {
+    "query": "I need 3 different promo concepts for a bakery campaign, nothing cliche",
+    "should_trigger": true
+  },
+  {
+    "query": "these thumbnails all look the same and samey, help",
+    "should_trigger": true
+  },
+  {
+    "query": "check my motion graphics code for glow and bounce easing that screams AI",
+    "should_trigger": true
+  },
+  {
+    "query": "fix the null pointer exception in my Java plugin",
+    "should_trigger": false
+  },
+  {
+    "query": "review this pull request for security bugs",
+    "should_trigger": false
+  },
+  {
+    "query": "summarize this PDF report in five bullets",
+    "should_trigger": false
+  },
+  {
+    "query": "what is the capital of Australia",
+    "should_trigger": false
+  },
+  {
+    "query": "convert this csv to an excel file with formulas",
+    "should_trigger": false
+  },
+  {
+    "query": "is this text written by an AI? I need a detector",
+    "should_trigger": false
+  },
+  {
+    "query": "help me make my essay undetectable by AI detectors",
+    "should_trigger": false
+  },
+  {
+    "query": "set up a Postgres database on Railway",
+    "should_trigger": false
+  },
+  {
+    "query": "translate this paragraph from English to French accurately",
+    "should_trigger": false
+  },
+  {
+    "query": "debug why my Discord bot keeps disconnecting",
+    "should_trigger": false
+  }
+]
