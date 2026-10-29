@@ -84,6 +84,7 @@ def main(argv=None):
     p.add_argument("--cols", type=int, default=6, help="sheet columns (default 6)")
     p.add_argument("--width", type=int, default=240, help="sheet thumbnail width (default 240)")
     p.add_argument("--shots-out", metavar="OUT.json", help="write shots.json for check_shots.py")
+    p.add_argument("--sweep", action="store_true", help="also print cut counts at several thresholds")
     p.add_argument("--json", action="store_true", help="print JSON")
     a = p.parse_args(argv)
     if shutil.which("ffmpeg") is None or shutil.which("ffprobe") is None:
@@ -102,6 +103,8 @@ def main(argv=None):
     info["cut_times"] = cuts
     info["cuts_per_10s"] = round(len(cuts) / info["duration"] * 10, 2) if info["duration"] else 0
     info["average_shot_seconds"] = round(sum(s["duration"] for s in shots) / len(shots), 2) if shots else 0
+    if a.sweep:
+        info["sweep"] = {str(th): len(detect_cuts(a.path, th)) for th in (0.04, 0.08, 0.15, 0.3)}
     if a.contact_sheet:
         try:
             info["contact_sheet_frames"] = contact_sheet(a.path, a.contact_sheet, a.every, a.cols, a.width)
@@ -118,6 +121,9 @@ def main(argv=None):
     else:
         print(f"{info['width']}x{info['height']} @ {info['fps']} fps, {info['duration']}s, audio: {'yes' if info['has_audio'] else 'NO'}")
         print(f"{info['cuts']} detected cut(s), {info['cuts_per_10s']} per 10s, average shot {info['average_shot_seconds']}s")
+        if a.sweep:
+            print("cuts by threshold: " + ", ".join(f"{k}: {v}" for k, v in info["sweep"].items()) +
+                  " (dark scenes with small text need low thresholds; low values also count in-scene growth)")
         if cuts:
             print("cuts at: " + ", ".join(f"{c:.2f}s" for c in cuts[:40]) + (" ..." if len(cuts) > 40 else ""))
         if a.contact_sheet:

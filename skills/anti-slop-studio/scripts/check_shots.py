@@ -37,7 +37,8 @@ def load(path):
 
 
 def words_in(text):
-    return len(re.findall(r"[\w\u0900-\u097F'’-]+", text or ""))
+    """Reading chunks: whitespace-separated tokens, so a filename or URL counts as one chunk."""
+    return len((text or "").split())
 
 
 def check(data, fmt="reel", target=None, sec_per_word=0.25, settle=0.25):

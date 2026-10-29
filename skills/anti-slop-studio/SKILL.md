@@ -1,9 +1,10 @@
 ---
 name: anti-slop-studio
 description: "Production-house quality control for anything AI helps make, so it does not look or sound generic, templated or AI-written: briefs, concepts, scripts, captions, ad copy, voiceover, reels, promo videos, code-rendered motion graphics, thumbnails, landing pages and UI, in English or Hinglish. Use when the user wants work that avoids AI slop, asks to review, rewrite, storyboard, script, design, edit or QA creative output, says something feels generic, samey, robotic or like a template, or wants a promo, ad, reel, trailer or campaign that stands out, even without saying slop. Runs a decide-first workflow plus scanners for text, design and motion code, shot rhythm, finished video and audio. Not for fact-checking, code review, or detecting or hiding AI authorship."
+license: MIT
 compatibility: "Any agent that reads Agent Skills (SKILL.md). Scripts use Python 3.8+ standard library only; probe_video.py and check_audio.py also need ffmpeg and ffprobe on PATH. No network access needed."
 metadata:
-  version: "1.2.0"
+  version: "1.3.0"
 ---
 
 # Anti-Slop Studio
@@ -94,7 +95,7 @@ The user's explicit direction wins over any default in this skill. Record it as 
 
 - A clean scan is not a good piece. Never report a score as proof of quality.
 - Hinglish rules are craft heuristics. Have a native speaker of the audience read important lines.
-- `probe_video.py` finds cuts by scene detection; dissolves and busy footage can be mis-counted. Trust the contact sheet over the number.
+- `probe_video.py` finds cuts by scene detection. Dissolves and busy footage can be mis-counted, and cuts between dark scenes with small text can be missed at the default threshold. Try `--threshold 0.04` or `--sweep`, and trust the contact sheet over the number.
 - Do not invent testimonials, statistics, prices, client names or contact details. Mark placeholders so they cannot ship.
 - Generated text, logos and UI are rebuilt as real type and vectors; never ship them as generated.
 - Respect deliberate exceptions the user asked for. Log them in the brief and move on.
